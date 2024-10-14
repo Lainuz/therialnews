@@ -2,15 +2,26 @@
 
 <% content_for :title, "Noticias" %>
 
+<div class="mb-4">
 <h1>Noticias</h1>
+</div>
+
 
 <div id="posts">
   <% @posts.each do |post| %>
+
+    <div class="">
     <%= render post %>
-    <p>
-      <%= link_to "Mostrar esta noticia", post %>
-    </p>
+    </div>
+
+    <div class="mb-3 mt-1">
+      <%= link_to "Mostrar", post, class:"btn btn-primary btn-sm" %>
+      <% if user_signed_in? %>
+      <%= link_to "Comentar", new_comment_path(@comment), class:"btn btn-warning btn-sm" %>
+      <% end %>
+    </div>
+
   <% end %>
 </div>
 
-<%= link_to "Nueva noticia", new_post_path %>
+

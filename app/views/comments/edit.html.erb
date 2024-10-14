@@ -1,0 +1,14 @@
+<% content_for :title, "Editing comment" %>
+
+<h1>Editar Comentario</h1>
+
+<%= render "form", comment: @comment %>
+<%# <%= @comment.post.title %>
+
+
+<br>
+
+<div>
+  <%= link_to "Mostrar comentario", @comment %> |
+  <%= link_to "Volver a comentarios", comments_path %>
+</div>

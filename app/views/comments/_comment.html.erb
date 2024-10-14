@@ -1,0 +1,21 @@
+<div id="<%= dom_id comment %>">
+
+ <div>
+    <strong>Noticia:</strong>
+    <%# <%= comment.post_id %>
+    <%= comment.post.title %>
+  </div>
+
+  <div>
+    <strong>usuario:</strong>
+    <%# <%= comment.user_id %>
+    <%= comment.user.email %>
+  </div>
+
+
+  <div>
+    <strong>Content:</strong>
+    <%= comment.content %>
+  </div>
+
+</div>

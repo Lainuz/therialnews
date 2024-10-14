@@ -2,12 +2,14 @@
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
+
+<div class="mt-2">
+  <%= link_to "Volver a las Noticias", posts_path, class:"link-success" %> |
     <% if user_signed_in? %>
+    <%= link_to "Comentar Noticia", new_comment_path(@comment) %> |
       <% if current_user.id == @post.user_id %>
-        <%= link_to "Edit this post", edit_post_path(@post) %> |
-      <%= button_to "Destroy this post", @post, method: :delete %>
+        <%= link_to "Editar Noticia", edit_post_path(@post),class:"link-warning" %> |
+        <%= button_to "Borrar Noticia", @post, method: :delete, class:"btn btn-danger" %>
     <% end %>
   <% end %>
 </div>

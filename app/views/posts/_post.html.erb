@@ -1,12 +1,41 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Título:</strong>
-    <%= post.title %>
-  </p>
 
-  <p>
+<div class="border border-danger-subtle rounded">
+
+<div class="mx-4 mt-2">
+  <div>
+  <strong>Título:</strong>
+      <%= post.title %> |
+
+<strong>Autor:</strong>
+      <%= post.user.email %>
+</div>
+
+  <div>
     <strong>Nota:</strong>
     <%= post.description %>
-  </p>
+  </div>
+
+  <div class="my-3">
+    <strong>Comentarios:</strong>
+    <% post.comments.each do |comentario| %>
+      <ul>
+        <li>
+        
+        <% if comentario.user.name %>
+        <span class="text-primary"><%= comentario.user.name %> dijo:</span>
+        <% else %>
+        <span class="text-info"><%= comentario.user.email %> dijo:</span>
+        <% end %>
+        
+        <%= comentario.content %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
 
 </div>
+
+

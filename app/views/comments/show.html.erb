@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+<%= render @comment %>
+
+<div>
+<%= link_to "Volver a Comentarios", comments_path %> |
+ <% if user_signed_in? %>
+   <% if current_user.id == @comment.user_id %>
+<%= link_to "Editar comentario", edit_comment_path(@comment) %> |
+  <%= button_to "borrar Comentario", @comment, method: :delete, class:"btn btn-danger" %>
+  <% end %>
+  <% end %>
+</div>
+

@@ -28,8 +28,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @posts = Post.all.pluck :title, :id
-  end
-
+ end
 
   # POST /comments or /comments.json
   def create
@@ -53,8 +52,8 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
     @posts = Post.all.pluck :title, :id
-  
-   
+  if current_user.id == @comment.user_id || current_user.role == "admin"
+
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
@@ -64,7 +63,9 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
- 
+  else
+    redirect_to comment_url(@comment), alert: "No tienes autorización para editar este comentario."
+ end
 end
 
   # DELETE /comments/1 or /comments/1.json

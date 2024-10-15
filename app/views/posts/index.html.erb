@@ -18,7 +18,7 @@
     <div class="mb-3 mt-1">
       <%= link_to "Mostrar", post, class:"btn btn-primary btn-sm" %>
       <% if user_signed_in? %>
-      <%= link_to "Comentar", new_comment_path, class:"btn btn-warning btn-sm" %>
+      <%= link_to "Comentar", new_comment_path(@comments), class:"btn btn-warning btn-sm" %>
       <% end %>
     </div>
 

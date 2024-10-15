@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @posts = Post.all.pluck :title, :id, :user_id
-    #@post = @comment.post
-
+    @post = @comment.post
+    @comment.user = current_user
     #capturo parametro del link
     #@com = params[:com]
   end
@@ -28,15 +28,18 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @posts = Post.all.pluck :title, :id
+     if current_user.id == @comment.user_id || current_user.role == "admin"
+     else
+      redirect_to comments_path(@comment), alert: "No tienes autorización para editar este comentario"
+    end
  end
 
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.user = current_user
     @posts = Post.all.pluck :title, :id
-    @post = @comment.post
-    
+    #@post = @comment.post
+    #@comment.user = current_user
 
     respond_to do |format|
       if @comment.save
@@ -52,8 +55,6 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
     @posts = Post.all.pluck :title, :id
-  if current_user.id == @comment.user_id || current_user.role == "admin"
-
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
@@ -63,20 +64,15 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
-  else
-    redirect_to comment_url(@comment), alert: "No tienes autorización para editar este comentario."
- end
 end
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @posts = Post.all.pluck :title, :id
-    
     @comment.destroy!
       respond_to do |format|
       format.html { redirect_to comments_path, status: :see_other, notice: "Comentario Eliminado." }
       format.json { head :no_content }
-    
     end
   end
 

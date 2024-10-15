@@ -41,7 +41,7 @@ Rails.application.configure do
   # caching is enabled.
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :sendmail
+config.action_mailer.delivery_method = :sendmail
 config.action_mailer.perform_deliveries = true
 config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default_options = {from: 'no-reply@testemail.com'}
@@ -57,8 +57,8 @@ config.action_mailer.smtp_settings = {
  enable_starttls_auto: true
 }
 
-config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-
+  #config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_url_options = { host: "https://mysite-1sr0.onrender.com" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

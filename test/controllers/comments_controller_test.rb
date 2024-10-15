@@ -39,11 +39,13 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update comment" do
+    sign_in users(:one)
     patch comment_url(@comment), params: { comment: { content: @comment.content, user_id: @comment.user_id } }
     assert_redirected_to comment_url(@comment)
   end
 
   test "should destroy comment" do
+    sign_in users(:one)
     assert_difference("Comment.count", -1) do
       delete comment_url(@comment)
     end

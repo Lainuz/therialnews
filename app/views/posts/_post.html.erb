@@ -8,7 +8,11 @@
       <%= post.title %> |
 
 <strong>Autor:</strong>
-      <%= post.user.email %>
+<% if post.user.name %>
+      <%= post.user.name %>
+<% else %>
+      <%= post.user.email %> 
+<% end %>
 </div>
 
   <div>

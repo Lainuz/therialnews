@@ -18,8 +18,11 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
-    @posts = Post.all.pluck :title, :id
-    @post = @comment.post
+    @posts = Post.all.pluck :title, :id, :user_id
+    #@post = @comment.post
+
+    #capturo parametro del link
+    #@com = params[:com]
   end
 
   # GET /comments/1/edit
@@ -68,7 +71,7 @@ end
   def destroy
     @posts = Post.all.pluck :title, :id
     
-    @comment.destroy!    
+    @comment.destroy!
       respond_to do |format|
       format.html { redirect_to comments_path, status: :see_other, notice: "Comentario Eliminado." }
       format.json { head :no_content }

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @post.comments.build   
+    @post.comments.build
   end
 
   # GET /posts/1/edit

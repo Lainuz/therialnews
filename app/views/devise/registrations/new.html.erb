@@ -34,6 +34,13 @@
  <%= f.text_field :age, autocomplete: "new-age" %>
 </div>
 
+<div class="field my-4">
+<span class="p">Este campo se habilita para realizar pruebas. </span><br>
+<span class="p">Debe ingresar normal_user, author o admin </span><br>
+ <%= f.label :rol %> <br>
+ <%= f.text_field :role %>
+</div>
+
   <div class="actions">
     <%= f.submit "Registrarse" %>
   </div>

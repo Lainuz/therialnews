@@ -94,9 +94,8 @@ config.action_mailer.smtp_settings = {
  authentication: 'plain',
  enable_starttls_auto: true
 }
-    config.action_mailer.default_url_options = { host: "https://mysite-1sr0.onrender.com" }
 
-
+config.action_mailer.default_url_options = { host: "https://mysite-1sr0.onrender.com" }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.

@@ -59,3 +59,6 @@ end
 gem "devise", "~> 4.9"
 
 gem 'figaro'
+gem 'annotate'
+
+gem "faker", "~> 3.5"

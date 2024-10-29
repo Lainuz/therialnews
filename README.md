@@ -8,7 +8,7 @@
 *En el formulario de registro se disponibiliza los campos de roles para realizar pruebas con usuario normal, autor y administrador.
 
 * Link de app en render.com:
-[link-id]: https://mysite-1sr0.onrender.com
+[link-id]: https://mysite-wuck.onrender.com
 
 
 ** Se modifica archivo config/enviroments/production.rb para cambiar host y se envien los email de recuperación de cuentas.
